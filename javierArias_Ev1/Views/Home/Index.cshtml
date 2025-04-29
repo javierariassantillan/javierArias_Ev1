@@ -1,15 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Inicio";
-    Layout = "~/Views/Shared/_Layout.cshtml"; // Para que tome Bootstrap y el diseño
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <div class="text-center">
     <h1 class="display-4">Bienvenido</h1>
 
-    <!-- Imagen del meme (.png corregido) -->
-    <img src="~/images/meme.png" style="width: 400px; height: 500px;" alt="Meme favorito" />
+    <img src="@Url.Content("~/images/meme.png")" style="width: 400px; height: 500px;" alt="Meme favorito" />
 
-    <!-- Campo de texto y botón -->
     <div class="mt-4">
         <input type="text" id="campoTexto" class="form-control mb-3" placeholder="Escribe algo..." />
 
@@ -19,7 +17,6 @@
     </div>
 </div>
 
-<!-- Script para mostrar la alerta -->
 @section Scripts {
     <script>
         function mostrarAlerta() {
