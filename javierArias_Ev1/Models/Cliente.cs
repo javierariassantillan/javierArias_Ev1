@@ -11,9 +11,12 @@ namespace javierArias_Ev1.Models
         [Key]
         public int ClienteId { get; set; }
 
+        public string AriasJ { get; set; }
+
         [Required(ErrorMessage = "El nombre es obligatorio.")]
         [StringLength(40, ErrorMessage = "El nombre no puede tener más de 40 caracteres.")]
-        public string AriasJ { get; set; } 
+        [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Solo se permiten letras en el nombre")]
+        public string Nombre { get; set; }  
 
         [Range(18, 100, ErrorMessage = "La edad debe estar entre 18 y 100.")]
         public int Edad { get; set; } // Aquí está le campo tipo int
