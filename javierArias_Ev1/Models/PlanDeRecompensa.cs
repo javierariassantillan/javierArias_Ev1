@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace javierArias_Ev1.Models
 {
 
-    public class PlanRecompensa
+    public class PlanDeRecompensa
     {
         [Key]
         public int Id { get; set; }
@@ -28,6 +28,7 @@ namespace javierArias_Ev1.Models
         }
 
         // Relaciones
+        [ForeignKey("ClienteId")]   
         public virtual Cliente? Cliente { get; set; }
     }
 }

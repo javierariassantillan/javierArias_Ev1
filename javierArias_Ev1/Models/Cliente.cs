@@ -32,7 +32,7 @@ namespace javierArias_Ev1.Models
         public DateTime FechaRegistro { get; set; } // Aquí esta el Campo tipo fecha
 
         // Relaciones
-        public virtual PlanRecompensa? PlanRecompensa { get; set; }
+        public virtual PlanDeRecompensa? PlanDeRecompensa { get; set; }
         public virtual ICollection<Reserva> Reservas { get; set; }
     }
 
