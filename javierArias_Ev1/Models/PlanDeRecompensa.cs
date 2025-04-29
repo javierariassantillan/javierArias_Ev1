@@ -3,13 +3,12 @@ using System.ComponentModel.DataAnnotations;
 
 namespace javierArias_Ev1.Models
 {
-
     public class PlanDeRecompensa
     {
         [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "El nombre del plan es obligatorio.")] //Campo requerido
+        [Required(ErrorMessage = "El nombre del plan es obligatorio.")]
         public string Nombre { get; set; }
 
         [DataType(DataType.Date)]
@@ -23,16 +22,18 @@ namespace javierArias_Ev1.Models
         {
             get
             {
-                return PuntosAcumulados >= 500 ? "GOLD" : "SILVER"; //Se muestra el tipo de recompensa
+                return PuntosAcumulados >= 500 ? "GOLD" : "SILVER";
             }
         }
 
         // Relaciones
-        [ForeignKey("ClienteId")]   
+        [Required]
+        public int ClienteId { get; set; }
+
+        [ForeignKey("ClienteId")]
         public virtual Cliente? Cliente { get; set; }
     }
 }
-
 
 
 

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using javierArias_Ev1.Data;
 
@@ -11,9 +12,11 @@ using javierArias_Ev1.Data;
 namespace javierArias_Ev1.Migrations
 {
     [DbContext(typeof(javierArias_Ev1Context))]
-    partial class javierArias_Ev1ContextModelSnapshot : ModelSnapshot
+    [Migration("20250429200730_RemoveAriasJ_AddNombre")]
+    partial class RemoveAriasJ_AddNombre
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -64,7 +67,7 @@ namespace javierArias_Ev1.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("ClienteId")
+                    b.Property<int?>("ClienteId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("FechaInicio")
@@ -80,7 +83,8 @@ namespace javierArias_Ev1.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[ClienteId] IS NOT NULL");
 
                     b.ToTable("PlanDeRecompensa");
                 });
@@ -116,9 +120,7 @@ namespace javierArias_Ev1.Migrations
                 {
                     b.HasOne("javierArias_Ev1.Models.Cliente", "Cliente")
                         .WithOne("PlanDeRecompensa")
-                        .HasForeignKey("javierArias_Ev1.Models.PlanDeRecompensa", "ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("javierArias_Ev1.Models.PlanDeRecompensa", "ClienteId");
 
                     b.Navigation("Cliente");
                 });
